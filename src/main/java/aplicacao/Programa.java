@@ -4,25 +4,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dominio.Pessoa;
+import modelo.Cliente;
 
 public class Programa {
 
 	public static void main(String[] args) {
 		
-		Pessoa p1 = new Pessoa(null, "Carlos da Silva", "carlos@gmail.com");
-		Pessoa p2 = new Pessoa(null, "Joaquim Torres", "joaquim@gmail.com");
-		Pessoa p3 = new Pessoa(null, "Ana Maria", "ana@gmail.com");
+		Cliente c1 = new Cliente(null, "Alanio Araujo Nunes", true);
+		Cliente c2 = new Cliente(null, "Jade Nunes", false);
+		Cliente c3 = new Cliente(null, "Maria Elena Araújo", true);
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-jpa");
 		EntityManager em = emf.createEntityManager();
+		
 		em.getTransaction().begin();
-		em.persist(p1);
-		em.persist(p2);
-		em.persist(p3);
+		em.persist(c1);
+		em.persist(c2);
+		em.persist(c3);
 		em.getTransaction().commit();
 		
-		System.out.println("Pronto!");
+		System.out.println("Feito.");
+		
 		em.close();
 		emf.close();
 	}

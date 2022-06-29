@@ -1,4 +1,4 @@
-package dominio;
+package modelo;
 
 import java.io.Serializable;
 
@@ -8,23 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Pessoa implements Serializable {
+public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String email;
+	private Boolean socio;
 
-	public Pessoa() {
+	public Cliente() {
 	}
 
-	public Pessoa(Integer id, String nome, String email) {
+	public Cliente(Integer id, String nome, Boolean socio) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.email = email;
+		this.socio = socio;
 	}
 
 	public Integer getId() {
@@ -43,16 +43,16 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public Boolean getSocio() {
+		return socio;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSocio(Boolean socio) {
+		this.socio = socio;
 	}
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
+		return "Cliente [id=" + id + ", nome=" + nome + ", socio=" + socio + "]";
 	}
 }
